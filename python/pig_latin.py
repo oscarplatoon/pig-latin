@@ -28,6 +28,7 @@ def translate(word_or_phrase):
 def pig_latin(word):
 
   vowel = ['a', 'e', 'i', 'o', 'u']
+  punctuation = [".", "!", ",", "?"]
   converted_word = ""
 
   if (word[0].lower() in vowel):
@@ -36,10 +37,17 @@ def pig_latin(word):
   else:
     word_array = list(word)
     first_letter_cap = False
+    last_letter_punc = False
+    punc = ""
 
     if (not word_array[0].islower()):
       first_letter_cap = True
       word_array[0] = word_array[0].lower()
+
+    if (word_array[-1] in punctuation):
+      last_letter_punc = True
+      punc = word_array.pop()
+
 
     while (not word_array[0].lower() in vowel):
       new_end_ch = word_array.pop(0)
@@ -50,8 +58,11 @@ def pig_latin(word):
     
     if (first_letter_cap):
       converted_word = converted_word.capitalize()
+    
+    if (last_letter_punc):
+      converted_word = converted_word + punc
 
   return converted_word
 
 
-print(translate("School"))
+print(translate("Hi, I'm Zach"))
