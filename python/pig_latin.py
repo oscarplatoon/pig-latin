@@ -1,3 +1,5 @@
+import re
+
 def translate(word_or_phrase):
   #split by word into array
   #iterate through word/phrase
@@ -16,7 +18,7 @@ def translate(word_or_phrase):
     whole_word_or_phrase = word
     first_letter_of_word = word[0]
     #final = list_holding.join(list_holding)
-    #Still looking for regex to check for vowel/would compare upper/lower seperately
+    #Still looking for regex to check for vowel/would compare upper/lower seperately/[a-zA-Z]?
     #Y is not a real vowel
     if first_letter_of_word in ('a','e','i','o','u'):
       whole_word_or_phrase = f'{whole_word_or_phrase}ay' 
@@ -34,4 +36,3 @@ def translate(word_or_phrase):
   final = ' '.join(list_holding)
   return print(final)
 
-translate('test aj test Im gg good game')
