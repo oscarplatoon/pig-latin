@@ -1,6 +1,42 @@
 # Rewrite this in Unit Test
 
 from pig_latin import translate
+import unittest
+
+
+import unittest
+
+class TestStringMethods(unittest.TestCase):
+
+    def test_pig_str(self):
+        output = translate('apple')
+        self.assertEqual(output, 'appleay')
+
+    def test_another(self):
+        output = translate('bannana')
+        self.assertEqual(output, 'annanabay')
+
+    def test_again(self):
+        output = translate('cherry')
+        self.assertEqual(output, 'errychay')
+
+    def test_again_again(self):
+        output = translate('eat pie')
+        self.assertEqual(output, 'eatay iepay')
+
+    def test_again_again_again(self):
+        output = translate('school')
+        self.assertEqual(output, 'oolschay')
+
+    def test_another_again(self):
+        output = translate('quiet')
+        self.assertEqual(output, 'uietqay')
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+
 
 print(f"translates a word beginning with a vowel: {translate('apple') == 'appleay'}")
 print(f"translates a word beginning with a consonant: {translate('banana') == 'ananabay'}")
