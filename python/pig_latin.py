@@ -11,18 +11,25 @@ def translate(word_or_phrase):
   #pushing list items in array
   list_holding = []
   #from list_holding convert back to string
-  final = ''
+  
   for word in split:
-    word = word[0]
-
+    whole_word_or_phrase = word
+    first_letter_of_word = word[0]
+    #final = list_holding.join(list_holding)
     #Still looking for regex to check for vowel/would compare upper/lower seperately
     #Y is not a real vowel
-    if word in ('a','e','i','o','u'):
-      word = f'{word}ay' 
-      list_holding += word 
-    elif word in ('A','E','I','O','U'):
-      word = f'{word}ay'
-      list_holding += word 
-  return print(list_holding)
+    if first_letter_of_word in ('a','e','i','o','u'):
+      whole_word_or_phrase = f'{whole_word_or_phrase}ay' 
+      list_holding.append(whole_word_or_phrase)
+    elif first_letter_of_word in ('A','E','I','O','U'):
+      whole_word_or_phrase = f'{whole_word_or_phrase}ay'
+      list_holding.append(whole_word_or_phrase)
+    elif first_letter_of_word not in ('a','e','i','o','u','A','E','I','O','U'):
+      constant_hold = whole_word_or_phrase[1:] + whole_word_or_phrase[0]
+      whole_word_or_phrase = f'{constant_hold}ay'
+      list_holding.append(whole_word_or_phrase)
+      
+  final = ' '.join(list_holding)
+  return print(final)
 
-translate('test a test O A')
+translate('test aj test Im gg good game')
