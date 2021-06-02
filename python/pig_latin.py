@@ -35,17 +35,23 @@ def pig_latin(word):
   
   else:
     word_array = list(word)
-    
+    first_letter_cap = False
+
+    if (not word_array[0].islower()):
+      first_letter_cap = True
+      word_array[0] = word_array[0].lower()
+
     while (not word_array[0].lower() in vowel):
       new_end_ch = word_array.pop(0)
-      print (new_end_ch)
       word_array.append(new_end_ch)
     
     
     converted_word = "".join(word_array) + "ay"
-
+    
+    if (first_letter_cap):
+      converted_word = converted_word.capitalize()
 
   return converted_word
 
 
-print(translate("I'm"))
+print(translate("School"))
