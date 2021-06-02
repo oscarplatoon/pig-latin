@@ -30,39 +30,47 @@ def pig_latin(word):
   vowel = ['a', 'e', 'i', 'o', 'u']
   punctuation = [".", "!", ",", "?"]
   converted_word = ""
+  word_array = list(word)
+  first_letter_cap = False
+  last_letter_punc = False
+  punc = ""
 
+  # case where word starts with a vowel
   if (word[0].lower() in vowel):
       converted_word = word + "ay"
   
+  #case where word starts with a consonant sound
   else:
-    word_array = list(word)
-    first_letter_cap = False
-    last_letter_punc = False
-    punc = ""
 
+    # check if first letter is capitalized
     if (not word_array[0].islower()):
       first_letter_cap = True
       word_array[0] = word_array[0].lower()
 
+    # check if last letter is punctuation
     if (word_array[-1] in punctuation):
       last_letter_punc = True
       punc = word_array.pop()
 
-
+    # move all consonants at the beginning of the
+    # word to the end, stop when a vowel is found
     while (not word_array[0].lower() in vowel):
       new_end_ch = word_array.pop(0)
       word_array.append(new_end_ch)
     
-    
+    # store word array as a string with ay at the end
     converted_word = "".join(word_array) + "ay"
     
+    # if the original word's first letter was capitalized,
+    # capitalize the first letter of the output string
     if (first_letter_cap):
       converted_word = converted_word.capitalize()
     
+    # if the original word ended in punctuation
+    # add the punctuation to the end of the string
     if (last_letter_punc):
       converted_word = converted_word + punc
 
   return converted_word
 
-
-print(translate("Hi, I'm Zach"))
+print(translate("Hi, I'm Zach!"))
