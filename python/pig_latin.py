@@ -20,7 +20,7 @@ def translate(word_or_phrase):
 # if the word starts with vowel, add -ay to word
 # and save to converted_word
 # if the word starts with a consonant, move all consonants
-# up to the first vowel to end end and save to converted_word
+# up to the first vowel to end and save to converted_word
 # add -ay to the end of converted_word
 # return converted_word
 
@@ -55,9 +55,15 @@ def pig_latin(word):
     # move all consonants at the beginning of the
     # word to the end, stop when a vowel is found
     while (not word_array[0].lower() in vowel):
+      #edge case where to treat qu as a single consonant sound
+      #moves 1 additional character to end of word array
+      if word_array[0].lower() == 'q':
+        new_end_ch = word_array.pop(0)
+        word_array.append(new_end_ch)
+    
       new_end_ch = word_array.pop(0)
       word_array.append(new_end_ch)
-    
+      
     # store word array as a string with ay at the end
     converted_word = "".join(word_array) + "ay"
     
@@ -72,5 +78,3 @@ def pig_latin(word):
       converted_word = converted_word + punc
 
   return converted_word
-
-print(translate("Hi, I'm Zach!"))
